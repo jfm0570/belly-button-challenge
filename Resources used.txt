@@ -1,0 +1,14 @@
+Sources used: 
+
+https://plotly.com/javascript/horizontal-bar-charts/
+https://codepen.io/pyche/pen/XWrxQP
+https://www.freecodecamp.org/news/how-to-build-a-dropdown-menu-with-javascript/
+https://www.w3schools.com/jsref/met_console_log.asp
+https://www.w3schools.com/js/js_object_definition.asp
+https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable
+https://stackoverflow.com/questions/11499268/sort-two-arrays-the-same-way
+https://plotly.com/javascript/horizontal-bar-charts/
+https://community.plotly.com/t/plotly-reading-numbers-instead-of-text/18537
+https://stackoverflow.com/questions/37149995/how-to-force-plotly-to-display-x-axis-numbers-as-categories
+https://www.geeksforgeeks.org/how-to-create-a-dropdown-list-with-array-values-using-javascript/
+https://stackoverflow.com/questions/36164514/putting-value-of-select-tag-into-javascript-variable
