@@ -11,4 +11,12 @@ https://plotly.com/javascript/horizontal-bar-charts/
 https://community.plotly.com/t/plotly-reading-numbers-instead-of-text/18537
 https://stackoverflow.com/questions/37149995/how-to-force-plotly-to-display-x-axis-numbers-as-categories
 https://www.geeksforgeeks.org/how-to-create-a-dropdown-list-with-array-values-using-javascript/
-https://stackoverflow.com/questions/36164514/putting-value-of-select-tag-into-javascript-variable
+https://plotly.com/javascript/hover-text-and-formatting/
+https://plotly.com/javascript/bubble-charts/
+
+https://www.w3schools.com/jsref/met_table_deleterow.asp#:~:text=The%20deleteRow()%20method%20removes,and%20insert%20a%20new%20row.
+https://stackoverflow.com/questions/51546058/d3-node-labeling-how-to-display-json-data-formatted-with-html
+https://plotly.com/javascript/horizontal-bar-charts/
+https://www.w3schools.com/js/js_object_definition.asp
+
+

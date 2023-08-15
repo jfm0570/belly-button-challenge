@@ -8,6 +8,8 @@ console.log("Data Promise: ", dataPromise);
 sample_values = null
 sample_ids = null
 final_data = null
+id_selected = null
+data_full = null
 
 // Fetch the JSON data and console log it
 d3.json(url).then(function(data) {
@@ -15,9 +17,12 @@ d3.json(url).then(function(data) {
   sample_values = data.samples.sample_values
   sample_ids = data.samples.otu_ids;
   final_data = create_bar_chart_data(data)
+  id_selected = 940
+  data_full = data
   add_ids_dropdown(data)
   create_bar_graph(final_data,'940')
   create_bubble_graph(final_data,'940')
+  demographics(data,'940')
 });
 
 // d3.selectAll("#selDataset").on("change", getData);
@@ -28,9 +33,76 @@ function optionChanged(id){
   // let id = dropdownMenu.property("value");
   create_bar_graph(final_data, id)
   create_bubble_graph(final_data,id)
+  id_selected = id
+  deleteRows()
+  demographics(data_full,id_selected)
+  
 
 }
+function selectDemographic(person) {
+  // console.log(person)
+  return person.id == id_selected;
+}
 
+function deleteRows(){
+  document.getElementById("table").deleteRow(0);
+  document.getElementById("table").deleteRow(0);
+  document.getElementById("table").deleteRow(0);
+  document.getElementById("table").deleteRow(0);
+  document.getElementById("table").deleteRow(0);
+  document.getElementById("table").deleteRow(0);
+  document.getElementById("table").deleteRow(0);
+  
+}
+function demographics(data,id){
+
+  console.log(data)
+  // filter() uses the custom function as its argument
+  let demographic = data.metadata.filter(selectDemographic)[0];
+  console.log(demographic)
+
+  let tbody = d3.select("tbody");
+
+  // Append one table row `tr` to the table body
+  let row = tbody.append("tr");
+
+  // "id": 941,
+  // "ethnicity": "Caucasian/Midleastern",
+  // "gender": "F",
+  // "age": 34.0,
+  // "location": "Chicago/IL",
+  // "bbtype": "I",
+  // "wfreq": 1.0
+  // Append one cell for the student name
+  row.append("td").text("id");
+  row.append("td").text(demographic.id);
+
+  row = tbody.append("tr");
+  row.append("td").text("ethnicity");
+  row.append("td").text(demographic.ethnicity);
+
+  row = tbody.append("tr");
+  row.append("td").text('gender');
+  row.append("td").text(demographic.gender);
+
+  row = tbody.append("tr");
+  row.append("td").text('age');
+  row.append("td").text(demographic.age);
+
+  row = tbody.append("tr");
+  row.append("td").text('location');
+  row.append("td").text(demographic.location);
+
+  row = tbody.append("tr");
+  row.append("td").text('bbtype');
+  row.append("td").text(demographic.bbtype);
+
+  row = tbody.append("tr");
+  row.append("td").text('wfreq');
+  row.append("td").text(demographic.wfreq);
+  
+
+}
 
 
 function add_ids_dropdown(data){
