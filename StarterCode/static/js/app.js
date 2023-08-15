@@ -7,30 +7,39 @@ const dataPromise = d3.json(url);
 console.log("Data Promise: ", dataPromise);
 sample_values = null
 sample_ids = null
+bar_data = null
+
 // Fetch the JSON data and console log it
 d3.json(url).then(function(data) {
   // console.log(data);
   sample_values = data.samples.sample_values
-  console.log(sample_values);
   sample_ids = data.samples.otu_ids;
-  console.log(sample_ids)
   bar_data = create_bar_chart_data(data)
-  init(bar_data)
+  add_ids_dropdown(data)
+  create_bar_graph(bar_data,'940')
 });
 
-d3.selectAll("#selDataset").on("change", getData);
-function(data){
-  var selectBox = document.getElementById('#selDataset');
-  for(var i = 0, l = data.names.length; i < l; i++){
-    var option = options[i];
-    selectBox.options.add( new Option(option, option, option) );
-  }
-  
+// d3.selectAll("#selDataset").on("change", getData);
+
+function optionChanged(id){
+  // let dropdownMenu = d3.select("#selDataset");
+  // Assign the value of the dropdown menu option to a letiable
+  // let id = dropdownMenu.property("value");
+  create_bar_graph(bar_data, id)
+
 }
 
 
 
-
+function add_ids_dropdown(data){
+  var selectBox = document.getElementById('selDataset');
+  for(var i = 0, l = data.names.length; i < l; i++){
+    let option = document.createElement("option")
+    option.value = data.names[i]
+    option.text = data.names[i]
+    selectBox.appendChild(option)
+  } 
+}
 
 function create_bar_chart_data(data){
   let samples = data.samples
@@ -42,7 +51,7 @@ function create_bar_chart_data(data){
       otu_val_list.push({'otu_ids': individual.otu_ids[j], 'sample_values': individual.sample_values[j]});
     
 
-
+    //sort the data
     otu_val_list = otu_val_list.sort((a, b) => b.sample_values - a.sample_values)
 
 
@@ -82,11 +91,11 @@ function create_bar_chart_data(data){
 
 // Create bar plot 
 // Display the default plot
-function init(bar_data) {
-    console.log(bar_data['940'])
+function create_bar_graph(bar_data,id) {
+    console.log(bar_data[id])
     let data = [{
-      x: bar_data['940'].sample_values.slice(0.10),
-      y: bar_data['940'].otu_ids.slice(0,10),
+      x: bar_data[id].sample_values.slice(0.10),
+      y: bar_data[id].otu_ids.slice(0,10),
       type: "bar",
       orientation:"h"
     }];
