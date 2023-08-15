@@ -36,9 +36,8 @@ function optionChanged(id){
   id_selected = id
   deleteRows()
   demographics(data_full,id_selected)
-  
-
 }
+
 function selectDemographic(person) {
   // console.log(person)
   return person.id == id_selected;
@@ -51,9 +50,9 @@ function deleteRows(){
   document.getElementById("table").deleteRow(0);
   document.getElementById("table").deleteRow(0);
   document.getElementById("table").deleteRow(0);
-  document.getElementById("table").deleteRow(0);
-  
+  document.getElementById("table").deleteRow(0);  
 }
+
 function demographics(data,id){
 
   console.log(data)
@@ -73,6 +72,7 @@ function demographics(data,id){
   // "location": "Chicago/IL",
   // "bbtype": "I",
   // "wfreq": 1.0
+
   // Append one cell for the student name
   row.append("td").text("id");
   row.append("td").text(demographic.id);
@@ -100,10 +100,7 @@ function demographics(data,id){
   row = tbody.append("tr");
   row.append("td").text('wfreq');
   row.append("td").text(demographic.wfreq);
-  
-
 }
-
 
 function add_ids_dropdown(data){
   var selectBox = document.getElementById('selDataset');
@@ -124,13 +121,13 @@ function create_bar_chart_data(data){
     for (var j = 0; j < individual.otu_ids.length; j++) 
       otu_val_list.push({'otu_ids': individual.otu_ids[j], 'sample_values': individual.sample_values[j], 'otu_labels': individual.otu_labels[j]});
     
-
     //sort the data
     otu_val_list = otu_val_list.sort((a, b) => b.sample_values - a.sample_values)
 
     otu_list = []
     samples_list = []
     otu_labels_list = []
+    
     for (var j = 0; j < otu_val_list.length; j++) {
       otu_list[j] = otu_val_list[j].otu_ids;
       samples_list[j] = otu_val_list[j].sample_values;
@@ -143,10 +140,6 @@ function create_bar_chart_data(data){
 
   return final_data
 }
-
-
- 
-
 
 // Create bar plot 
 // Display the default plot
@@ -182,7 +175,6 @@ function create_bar_graph(bar_data,id) {
         size: final_data[id].sample_values,
         color: final_data[id].otu_ids
       }
-
     }];
   
     let layout = {
@@ -193,4 +185,3 @@ function create_bar_graph(bar_data,id) {
   
     Plotly.newPlot("bubble", data, layout);
   }
-
